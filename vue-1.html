@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>{{mes1}}</div>
+      <div @click="fun1">fun1：{{mes2}}</div>
+      <div @click="isTrue()">c: {{c}}</div>
+      <div v-html="v_html">v_html:</div>
+      <button @click="disabledButton" v-bind:disabled="isDisabled">
+        button
+      </button>
+      <button disabled="{{isDisabled?false:true}}">button</button>
+      <div :style="{display:(1===1?'none':'block')}">display</div>
+      <div v-text="date.getFullYear()"></div>
+      <textarea name="" id="" cols="30" rows="10" v-model="content"></textarea>
+      <input type="checkbox" id="jack" value="Jack" v-model="checkedNames" />
+      <label for="jack">Jack</label>
+      <input type="checkbox" id="john" value="John" v-model="checkedNames" />
+      <label for="john">John</label>
+      <input type="checkbox" id="mike" value="Mike" v-model="checkedNames" />
+      <label for="mike">Mike</label>
+      <br />
+      <span>Checked names: {{ checkedNames }}</span>
+      <button-counter title="vue" />
+    </div>
+
+    <script>
+      // 定义一个名为 button-counter 的组件
+      // 自定义组件中props和data不能共存
+      Vue.component("button-counter", {
+        data: function () {
+          return {
+            count: 0,
+          };
+        },
+        props: ["title"],
+        template: `
+          <button v-on:click="count++">You clicked me {{ count }} times.</button>
+          <h4>{{title}}</h4>
+        `,
+      });
+
+      const data = {
+        a: 1,
+        b: 1,
+        c: "",
+        mes1: "hello vue",
+        mes2: "",
+        is: "",
+        v_html: "<h1>v_html</h1>",
+        isDisabled: false,
+        date: new Date(),
+        content: "",
+        checkedNames: [],
+      };
+      let vm = new Vue({
+        el: "#app",
+        data,
+        methods: {
+          fun1: function () {
+            console.log("fun1");
+            // vm.$data.mes2 = "fun1"
+            this.mes2 = "fun1";
+          },
+          disabledButton: function () {
+            vm.$data.isDisabled = true;
+          },
+        },
+        computed: {
+          isTrue: function () {
+            return (this.c = vm.a + data.b);
+          },
+        },
+        created: function () {
+          this.mes1 = "created";
+          console.log("created");
+        },
+        beforeMount: function () {
+          console.log("beforeMount");
+        },
+      });
+    </script>
+  </body>
+</html>

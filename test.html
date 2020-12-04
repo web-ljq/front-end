@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // json
+      const a = {
+        m: ["1", 111],
+        getName: () => {
+          return null;
+        },
+      };
+      console.log(a.getName());
+
+      //conversion
+      const obj = [
+        {
+          plateColor: "2",
+          areaName: "阳平高速(G65)",
+          currentLocation: { vno: "桂C19079", adr: "平乐县石灰窑,西北方向" },
+          count: 0,
+        },
+        {
+          plateColor: "2",
+          areaName: "阳平高速(G65)",
+          currentLocation: { vno: "桂C87259", adr: "阳朔县阳朔斗牛城,南方向" },
+          count: 0,
+        },
+      ];
+      // ...
+      [
+        { areaName: "阳平高速(G65)", adr: "平乐县石灰窑,西北方向" },
+        { areaName: "阳平高速(G65)", adr: "阳朔县阳朔斗牛城,南方向" },
+      ];
+      const conversion = (obj) => {
+        const newObj = [];
+        obj.forEach((item, index) => {
+          newObj.push({
+            areaName: item.areaName,
+            adr: item.currentLocation.adr,
+          });
+        });
+        return newObj;
+      };
+      console.log(conversion(obj));
+    </script>
+  </body>
+</html>

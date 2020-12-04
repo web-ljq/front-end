@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: url(./static/images/bg.jpg) no-repeat;
+        background-size: cover;
+      }
+      h1 {
+        color: #fff;
+      }
+      .login__wrap {
+        width: 30%;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        background: #00000060;
+        padding: 15px 50px 20px;
+      }
+      .login__wrap .login__box {
+        margin-top: 30px;
+      }
+      .login__wrap .login__box .login__input-item {
+        margin-top: 15px;
+      }
+      .login__wrap .login__box .login__input-item input {
+        width: 200px;
+        border: 0;
+        border-bottom: 3px solid #fff;
+        padding: 5px 10px;
+        background: #ffffff00;
+        color: #fff;
+      }
+      .login__buttons button {
+        margin-top: 25px;
+        width: 180px;
+        height: 30px;
+        border: 0;
+        background: #eeeeee50;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login__wrap">
+      <h1>Login</h1>
+      <div class="login__box">
+        <div class="login__input-item">
+          <i></i>
+          <input type="text" placeholder="Username" />
+        </div>
+        <div class="login__input-item">
+          <i></i>
+          <input type="text" placeholder="Password" />
+        </div>
+        <div class="login__buttons">
+          <button>Login</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
