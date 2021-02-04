@@ -1,0 +1,122 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  /* 溢出隐藏 */
+  overflow: hidden;
+}
+.navbar {
+  /* 相对定位 */
+  position: relative;
+  /* 元素宽度占浏览器可视区域的宽度 */
+  width: 100vm;
+}
+.navbar input {
+  /* 隐藏元素 */
+  display: none;
+}
+.navbar label {
+  position: absolute;
+  top: 0;
+  left: 70px;
+  width: 100%;
+  height: 43px;
+  padding-left: 20px;
+  font-size: 30px;
+  color: #5a738e;
+  background-color: #ededed;
+  border: 1px solid #d9dee4;
+  /* 鼠标移入变小手 */
+  cursor: pointer;
+  /* 加过度 */
+  transition: all 0.5s;
+}
+.navbar ul {
+  overflow: hidden;
+  /* 删除li前面的小圆点 */
+  list-style: none;
+  width: 70px;
+  /* 高度站浏览器的可视区域高度 */
+  height: 100vh;
+  background-color: #2a3f54;
+  transition: all 0.5s;
+}
+.navbar ul li {
+  height: 70px;
+  margin-bottom: 10px;
+}
+/* :first-child选择器 选择ul元素下的第一个元素 */
+.navbar ul li:first-child {
+  /* 弹性布局 让元素在该盒子内水平 垂直居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+.navbar ul li:first-child img {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+.navbar ul li:first-child span {
+  /* 先把文字隐藏起来 */
+  display: none;
+  color: #fff;
+  /* 禁止文字换行 */
+  white-space: nowrap;
+  padding-left: 10px;
+}
+.navbar ul li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 改变弹性盒子的主轴方向 */
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: #d1d1d1;
+  text-decoration: none;
+}
+.navbar ul li a i {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.navbar ul li a span {
+  font-size: 10px;
+  /* 给这个文字也加禁止换行 不然切换的一瞬间会垂直排列 */
+  white-space: nowrap;
+}
+.navbar ul li a:hover {
+  color: #fff;
+  background-color: #35495d;
+}
+/* :checked选择器判断复选框是否被选中 */
+/* +是相邻兄弟选择器 找到了input的下一个兄弟label */
+.navbar input:checked + label {
+  left: 200px;
+}
+/* ~也是兄弟选择器，但是可以找到隔了几代的兄弟 */
+.navbar input:checked ~ ul {
+  width: 200px;
+}
+.navbar input:checked ~ ul li:first-child {
+  /* 改变了弹性盒子内的水平排列方式 */
+  justify-content: flex-start;
+}
+.navbar input:checked ~ ul li:first-child span {
+  /* 文字显示 */
+  display: block;
+}
+.navbar input:checked ~ ul li a {
+  /* 改变弹性盒子的主轴为默认值 */
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.navbar input:checked ~ ul li a i {
+  font-size: 18px;
+  margin: 0 15px;
+}
+.navbar input:checked ~ ul li a span {
+  font-size: 13px;
+}
